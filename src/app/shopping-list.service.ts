@@ -55,6 +55,30 @@ export class ShoppingListService {
       );
   }
 
+  moveItemToBuyList(item: ListItem): Observable<void> {
+    return this.postToBuyItem(item).pipe(
+      switchMap(() => {
+        return this.deletePreviouslyBoughtItem(item.id);
+      }),
+      tap(() => {
+        this.newItemSubject.next();
+        this.deletePreviouslyBoughtItemSubject.next();
+      })
+    );
+  }
+
+  moveItemToBoughtList(item: ListItem): Observable<void> {
+    return this.postPreviouslyBoughtItem(item).pipe(
+      switchMap(() => {
+        return this.deleteToBuyItem(item.id);
+      }),
+      tap(() => {
+        this.newItemSubject.next();
+        this.deleteToBuyItemSubject.next();
+      })
+    );
+  }
+
   getNewItemObservable(): Observable<void> {
     return this.newItemSubject.asObservable();
   }
