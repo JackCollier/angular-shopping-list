@@ -12,17 +12,24 @@ export class ShoppingListDisplayComponent implements OnInit {
   toBuyList: ListItem[] = [];
   previouslyBoughtList: ListItem[] = [];
   private newItemSubscription!: Subscription;
+  private deleteToBuyItemSubscription!: Subscription;
+  private deletePreviouslyBoughtItemSubscription!: Subscription;
 
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
     this.getToBuyItems();
     this.getPreviouslyBoughtItems();
+
     this.newItemSubscription = this.shoppingListService
       .getNewItemObservable()
-      .subscribe(() => {
-        this.getToBuyItems();
-      });
+      .subscribe(() => this.getToBuyItems());
+    this.deleteToBuyItemSubscription = this.shoppingListService
+      .getDeleteToBuyItemObservable()
+      .subscribe(() => this.getToBuyItems());
+    this.deletePreviouslyBoughtItemSubscription = this.shoppingListService
+      .getDeletePreviouslyBoughtItemObservable()
+      .subscribe(() => this.getPreviouslyBoughtItems());
   }
 
   getToBuyItems(): void {
