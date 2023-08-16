@@ -1,5 +1,5 @@
 <h2>To Buy List</h2>
-<ul cdkDropListGroup>
+<ul cdkDropListGroup class="list">
   <div
     cdkDropList
     #toBuy="cdkDropList"
@@ -8,9 +8,9 @@
     (cdkDropListDropped)="drop($event)"
   >
     <li *ngFor="let item of toBuyList" cdkDrag>
-      <div [ngClass]="{ 'important-item': item.important }">
-        <span>{{ toBuyList.indexOf(item) }}</span>
-        <span>{{ item.itemName }}</span>
+      <div class="listItem" [ngClass]="{ 'important-item': item.important }">
+        <span class="badge">{{ toBuyList.indexOf(item) }}</span>
+        <span class="name">{{ item.itemName }}</span>
         <button (click)="deleteToBuyItem(item.id)">Delete</button>
         <button (click)="makeItemImportant(item)">Important</button>
       </div>
@@ -19,7 +19,7 @@
 </ul>
 
 <h2>Previously Bought List</h2>
-<ul cdkDropListGroup>
+<ul cdkDropListGroup class="list">
   <div
     cdkDropList
     #previouslyBought="cdkDropList"
@@ -28,9 +28,9 @@
     (cdkDropListDropped)="drop($event)"
   >
     <li *ngFor="let item of previouslyBoughtList" cdkDrag>
-      <div>
-        <span>{{ previouslyBoughtList.indexOf(item) }}</span>
-        <span>{{ item.itemName }}</span>
+      <div class="listItem">
+        <span class="badge">{{ previouslyBoughtList.indexOf(item) }}</span>
+        <span class="name">{{ item.itemName }}</span>
         <button (click)="deletePreviouslyBoughtItem(item.id)">Delete</button>
       </div>
     </li>
