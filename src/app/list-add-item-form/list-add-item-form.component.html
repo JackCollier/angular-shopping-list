@@ -2,7 +2,13 @@
   <h2>Add an item to the To Buy List</h2>
   <form [formGroup]="listItemForm" (submit)="submitListItem()">
     <label for="item-name">Item name:</label>
-    <input id="item-name" type="text" formControlName="itemName" />
+    <input
+      id="item-name"
+      type="text"
+      formControlName="itemName"
+      maxlength="13"
+      minlength="2"
+    />
     <button type="submit">Create item</button>
   </form>
 </div>
