@@ -1,3 +1,84 @@
+.list {
+  margin: 0 0 2em 0;
+  list-style-type: none;
+  padding: 0;
+  width: 20rem;
+}
+
+.list li {
+  display: flex;
+}
+
+.list .listItem {
+  flex: 1;
+  position: relative;
+  left: 0;
+  background-color: #eee;
+  margin: 0.5em;
+  padding: 0;
+  border-radius: 4px;
+  display: flex;
+  align-items: stretch;
+  justify-content: space-between;
+  height: 2rem;
+}
+
+.list button:hover {
+  color: #2c3a41;
+  background-color: #e6e6e6;
+  left: 0.1em;
+}
+
+.list button:active {
+  background-color: #525252;
+  color: #fafafa;
+}
+
+.list button.selected {
+  background-color: black;
+  color: white;
+}
+
+.list button.selected:hover {
+  background-color: #505050;
+  color: white;
+}
+
+.list button.selected:active {
+  background-color: black;
+  color: white;
+}
+
+.list .badge {
+  display: inline-block;
+  font-size: small;
+  color: white;
+  padding: 0.8em 0.7em 0 0.7em;
+  background-color: #405061;
+  line-height: 1em;
+  margin-right: 0.8em;
+  border-radius: 4px 0 0 4px;
+}
+
+.list .name {
+  align-self: center;
+}
+
+.important0 {
+  background-color: rgb(192, 99, 99);
+}
+
+.invis {
+  background-color: none;
+  width: 20rem;
+  opacity: none;
+}
+
 .important-item {
   background-color: rgb(212, 156, 156);
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
 }
