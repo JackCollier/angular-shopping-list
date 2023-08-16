@@ -21,9 +21,7 @@ export class ListAddItemFormComponent {
       important: false,
     };
 
-    this.shoppingListService.postToBuyItem(newItem).subscribe((res) => {
-      console.log('new item added', res);
-    });
+    this.shoppingListService.postToBuyItem(newItem).subscribe((res) => {});
 
     this.listItemForm.reset();
   }
