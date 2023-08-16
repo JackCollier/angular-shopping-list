@@ -13,4 +13,18 @@ export class ListAddItemFormComponent {
   listItemForm = new FormControl({
     itemName: new FormControl(''),
   });
+
+  submitListItem() {
+    const newItem = {
+      id: 0,
+      itemName: this.listItemForm.value?.itemName ?? '',
+      important: false,
+    };
+
+    this.shoppingListService.postToBuyItem(newItem).subscribe((res) => {
+      console.log('new item added', res);
+    });
+
+    this.listItemForm.reset();
+  }
 }
