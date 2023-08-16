@@ -1,5 +1,5 @@
 export interface ListItem {
-  id?: string;
+  id: number;
   itemName: string;
   important: boolean;
 }
