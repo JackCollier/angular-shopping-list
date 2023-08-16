@@ -1,1 +1,8 @@
-<p>list-add-item-form works!</p>
+<div>
+  <h2>Add an item to the To Buy List</h2>
+  <form [formGroup]="listItemForm" (submit)="submitListItem()">
+    <label for="item-name">Item name:</label>
+    <input id="item-name" type="text" formControlName="itemName" />
+    <button type="submit">Create item</button>
+  </form>
+</div>
