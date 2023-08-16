@@ -8,7 +8,7 @@ import { ShoppingListService } from '../shopping-list.service';
   templateUrl: './shopping-list-display.component.html',
   styleUrls: ['./shopping-list-display.component.css'],
 })
-export class ShoppingListDisplayComponent {
+export class ShoppingListDisplayComponent implements OnInit {
   toBuyList: ListItem[] = [];
   previouslyBoughtList: ListItem[] = [];
   private newItemSubscription!: Subscription;
@@ -36,5 +36,13 @@ export class ShoppingListDisplayComponent {
     this.shoppingListService
       .getAllPreviouslyBoughtItems()
       .subscribe((listItems) => (this.previouslyBoughtList = listItems));
+  }
+
+  deleteToBuyItem(id: number): void {
+    this.shoppingListService.deleteToBuyItem(id).subscribe(() => {});
+  }
+
+  deletePreviouslyBoughtItem(id: number): void {
+    this.shoppingListService.deletePreviouslyBoughtItem(id).subscribe(() => {});
   }
 }
