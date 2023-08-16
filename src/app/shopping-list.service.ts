@@ -20,4 +20,8 @@ export class ShoppingListService {
   getAllPreviouslyBoughtItems(): Observable<ListItem[]> {
     return this.http.get<ListItem[]>(this.apiUrlPreviouslyBoughtList);
   }
+
+  postToBuyItem(item: ListItem): Observable<ListItem[]> {
+    return this.http.post<ListItem[]>(this.apiUrlToBuyList, item);
+  }
 }
