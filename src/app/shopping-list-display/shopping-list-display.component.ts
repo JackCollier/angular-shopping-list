@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { ListItem } from '../list-item';
 import { Subscription } from 'rxjs';
 import { ShoppingListService } from '../shopping-list.service';
+import {
+  CdkDragDrop,
+  moveItemInArray,
+  transferArrayItem,
+} from '@angular/cdk/drag-drop';
 
 @Component({
   selector: 'app-shopping-list-display',
@@ -51,5 +56,32 @@ export class ShoppingListDisplayComponent implements OnInit {
 
   deletePreviouslyBoughtItem(id: number): void {
     this.shoppingListService.deletePreviouslyBoughtItem(id).subscribe(() => {});
+  }
+
+  drop(event: CdkDragDrop<ListItem[]>): void {
+    if (event.previousContainer === event.container) {
+      moveItemInArray(
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    } else {
+      const movedItem = event.previousContainer.data[event.previousIndex];
+      if (event.container.id === 'cdk-drop-list-0') {
+        this.shoppingListService
+          .moveItemToBuyList(movedItem)
+          .subscribe(() => {});
+      } else if (event.container.id === 'cdk-drop-list-1') {
+        this.shoppingListService
+          .moveItemToBoughtList(movedItem)
+          .subscribe(() => {});
+      }
+      transferArrayItem(
+        event.previousContainer.data,
+        event.container.data,
+        event.previousIndex,
+        event.currentIndex
+      );
+    }
   }
 }
