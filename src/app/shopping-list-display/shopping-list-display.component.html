@@ -1,0 +1,19 @@
+<h2>To Buy List</h2>
+<ul cdkDropListGroup>
+  <div
+    cdkDropList
+    #toBuy="cdkDropList"
+    [cdkDropListData]="toBuyList"
+    [cdkDropListConnectedTo]="[previouslyBought]"
+  ></div>
+</ul>
+
+<h2>Previously Bought List</h2>
+<ul cdkDropListGroup>
+  <div
+    cdkDropList
+    #previouslyBought="cdkDropList"
+    [cdkDropListData]="previouslyBoughtList"
+    [cdkDropListConnectedTo]="[toBuy]"
+  ></div>
+</ul>
