@@ -14,11 +14,12 @@
             <span class="name"></span>
           </div>
         </li>
-        <li *ngFor="let item of toBuyList" cdkDrag>
-          <div
-            class="listItem"
-            [ngClass]="{ 'important-item': item.important }"
-          >
+        <li
+          *ngFor="let item of toBuyList"
+          cdkDrag
+          [ngClass]="{ 'important-item': item.important }"
+        >
+          <div class="listItem">
             <span class="badge">{{ toBuyList.indexOf(item) }}</span>
             <span class="name">{{ item.itemName }}</span>
             <button (click)="deleteToBuyItem(item.id)">Delete</button>

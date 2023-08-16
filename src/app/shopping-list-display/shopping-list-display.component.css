@@ -77,7 +77,7 @@
 }
 
 .important-item {
-  background-color: rgb(212, 156, 156);
+  outline: 2px solid #405061;
 }
 
 .container {
