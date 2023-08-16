@@ -16,6 +16,7 @@ export class ListAddItemFormComponent {
 
   submitListItem() {
     const newItem = {
+      id: Math.floor(Math.random() * 10000) + 1,
       itemName: this.listItemForm.value.itemName ?? '',
       important: false,
     };
