@@ -16,7 +16,6 @@ export class ListAddItemFormComponent {
 
   submitListItem() {
     const newItem = {
-      id: 0,
       itemName: this.listItemForm.value.itemName ?? '',
       important: false,
     };
