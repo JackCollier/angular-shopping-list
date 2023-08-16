@@ -9,6 +9,11 @@
         [cdkDropListConnectedTo]="[previouslyBought]"
         (cdkDropListDropped)="drop($event)"
       >
+        <li *ngIf="toBuyList.length === 0">
+          <div class="listItem">
+            <span class="name"></span>
+          </div>
+        </li>
         <li *ngFor="let item of toBuyList" cdkDrag>
           <div
             class="listItem"
@@ -34,6 +39,12 @@
         [cdkDropListConnectedTo]="[toBuy]"
         (cdkDropListDropped)="drop($event)"
       >
+        <li *ngIf="previouslyBoughtList.length === 0">
+          <div class="listItem">
+            <span class="name"></span>
+          </div>
+        </li>
+
         <li *ngFor="let item of previouslyBoughtList" cdkDrag>
           <div class="listItem">
             <span class="badge">{{ previouslyBoughtList.indexOf(item) }}</span>
