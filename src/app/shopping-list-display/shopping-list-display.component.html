@@ -5,7 +5,14 @@
     #toBuy="cdkDropList"
     [cdkDropListData]="toBuyList"
     [cdkDropListConnectedTo]="[previouslyBought]"
-  ></div>
+  >
+    <li *ngFor="let item of toBuyList" cdkDrag>
+      <div>
+        <span>{{ toBuyList.indexOf(item) }}</span>
+        <span>{{ item.itemName }}</span>
+      </div>
+    </li>
+  </div>
 </ul>
 
 <h2>Previously Bought List</h2>
@@ -15,5 +22,12 @@
     #previouslyBought="cdkDropList"
     [cdkDropListData]="previouslyBoughtList"
     [cdkDropListConnectedTo]="[toBuy]"
-  ></div>
+  >
+    <li *ngFor="let item of previouslyBoughtList" cdkDrag>
+      <div>
+        <span>{{ previouslyBoughtList.indexOf(item) }}</span>
+        <span>{{ item.itemName }}</span>
+      </div>
+    </li>
+  </div>
 </ul>
