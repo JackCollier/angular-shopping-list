@@ -2,21 +2,25 @@
   "to-buy-list": [
     {
       "id": 1,
-      "itemName": "Silver"
+      "itemName": "Silver",
+      "important": false
     },
     {
       "id": 2,
-      "itemName": "Gold"
+      "itemName": "Gold",
+      "important": false
     }
   ],
   "previously-bought-list": [
     {
       "id": 1,
-      "itemName": "Sulphur"
+      "itemName": "Sulphur",
+      "important": false
     },
     {
       "id": 2,
-      "itemName": "Copper"
+      "itemName": "Copper",
+      "important": false
     }
   ]
 }
