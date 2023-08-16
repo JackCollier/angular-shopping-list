@@ -5,6 +5,7 @@
     #toBuy="cdkDropList"
     [cdkDropListData]="toBuyList"
     [cdkDropListConnectedTo]="[previouslyBought]"
+    (cdkDropListDropped)="drop($event)"
   >
     <li *ngFor="let item of toBuyList" cdkDrag>
       <div>
@@ -23,6 +24,7 @@
     #previouslyBought="cdkDropList"
     [cdkDropListData]="previouslyBoughtList"
     [cdkDropListConnectedTo]="[toBuy]"
+    (cdkDropListDropped)="drop($event)"
   >
     <li *ngFor="let item of previouslyBoughtList" cdkDrag>
       <div>
