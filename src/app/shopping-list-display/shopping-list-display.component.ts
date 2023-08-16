@@ -58,19 +58,17 @@ export class ShoppingListDisplayComponent implements OnInit {
   }
 
   drop(event: CdkDragDrop<ListItem[]>): void {
-    let importantArray: any = [];
+    let numberOfImportantItems = 0;
     const movedItem = event.previousContainer.data[event.previousIndex];
     event.container.data.forEach((item) => {
-      if (item.important) {
-        importantArray.push({});
-      }
+      if (item.important) numberOfImportantItems++;
     });
     if (event.previousContainer === event.container) {
       if (!movedItem.important) {
         moveItemInArray(
           event.container.data,
           event.previousIndex,
-          event.currentIndex + importantArray.length
+          event.currentIndex + numberOfImportantItems
         );
       }
     } else {
