@@ -10,14 +10,14 @@ import { ShoppingListService } from '../shopping-list.service';
 export class ListAddItemFormComponent {
   constructor(private shoppingListService: ShoppingListService) {}
 
-  listItemForm = new FormControl({
+  listItemForm = new FormGroup({
     itemName: new FormControl(''),
   });
 
   submitListItem() {
     const newItem = {
       id: 0,
-      itemName: this.listItemForm.value?.itemName ?? '',
+      itemName: this.listItemForm.value.itemName ?? '',
       important: false,
     };
 
