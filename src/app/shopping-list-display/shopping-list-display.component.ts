@@ -40,13 +40,19 @@ export class ShoppingListDisplayComponent implements OnInit {
   getToBuyItems(): void {
     this.shoppingListService.getAllToBuyItems().subscribe((listItems) => {
       this.toBuyList = listItems;
+      this.toBuyList.sort((a, b) => a.itemName.localeCompare(b.itemName));
     });
   }
 
   getPreviouslyBoughtItems(): void {
     this.shoppingListService
       .getAllPreviouslyBoughtItems()
-      .subscribe((listItems) => (this.previouslyBoughtList = listItems));
+      .subscribe((listItems) => {
+        this.previouslyBoughtList = listItems;
+        this.previouslyBoughtList.sort((a, b) =>
+          a.itemName.localeCompare(b.itemName)
+        );
+      });
   }
 
   deleteToBuyItem(id: number): void {
