@@ -40,7 +40,6 @@ export class ShoppingListDisplayComponent implements OnInit {
   getToBuyItems(): void {
     this.shoppingListService.getAllToBuyItems().subscribe((listItems) => {
       this.toBuyList = listItems;
-      console.log(this.toBuyList);
     });
   }
 
@@ -83,5 +82,14 @@ export class ShoppingListDisplayComponent implements OnInit {
         event.currentIndex
       );
     }
+  }
+
+  makeItemImportant(item: ListItem): void {
+    this.shoppingListService.toggleItemImportance(item).subscribe(() => {
+      const currentIndex = this.toBuyList.indexOf(item);
+      this.toBuyList[currentIndex].important =
+        !this.toBuyList[currentIndex].important;
+      moveItemInArray(this.toBuyList, currentIndex, 0);
+    });
   }
 }
