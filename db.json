@@ -1,0 +1,22 @@
+{
+  "to-buy-list": [
+    {
+      "id": 1,
+      "itemName": "Silver"
+    },
+    {
+      "id": 2,
+      "itemName": "Gold"
+    }
+  ],
+  "previously-bought-list": [
+    {
+      "id": 1,
+      "itemName": "Sulphur"
+    },
+    {
+      "id": 2,
+      "itemName": "Copper"
+    }
+  ]
+}
