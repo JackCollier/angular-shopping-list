@@ -5,9 +5,10 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ShoppingListDisplayComponent } from './shopping-list-display/shopping-list-display.component';
 import { DragDropModule } from '@angular/cdk/drag-drop';
+import { ListAddItemFormComponent } from './list-add-item-form/list-add-item-form.component';
 
 @NgModule({
-  declarations: [AppComponent, ShoppingListDisplayComponent],
+  declarations: [AppComponent, ShoppingListDisplayComponent, ListAddItemFormComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
