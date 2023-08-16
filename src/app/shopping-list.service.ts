@@ -35,7 +35,7 @@ export class ShoppingListService {
     return this.http.delete<void>(`${this.apiUrlToBuyList}/${id}`);
   }
 
-  deleteBoughtItem(id: number): Observable<void> {
+  deletePreviouslyBoughtItem(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrlPreviouslyBoughtList}/${id}`);
   }
 
