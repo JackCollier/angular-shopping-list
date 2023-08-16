@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ListItem } from './list-item';
 import { Observable, Subject } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { tap } from 'rxjs/operators';
+import { tap, switchMap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -31,6 +31,10 @@ export class ShoppingListService {
         this.newItemSubject.next();
       })
     );
+  }
+
+  postPreviouslyBoughtItem(item: ListItem): Observable<void> {
+    return this.http.post<void>(this.apiUrlPreviouslyBoughtList, item);
   }
 
   deleteToBuyItem(id: number): Observable<void> {
