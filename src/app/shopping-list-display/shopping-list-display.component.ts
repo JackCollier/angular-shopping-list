@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ListItem } from '../list-item';
+import { Subscription } from 'rxjs';
 import { ShoppingListService } from '../shopping-list.service';
 
 @Component({
@@ -10,12 +11,18 @@ import { ShoppingListService } from '../shopping-list.service';
 export class ShoppingListDisplayComponent {
   toBuyList: ListItem[] = [];
   previouslyBoughtList: ListItem[] = [];
+  private newItemSubscription!: Subscription;
 
   constructor(private shoppingListService: ShoppingListService) {}
 
   ngOnInit(): void {
     this.getToBuyItems();
     this.getPreviouslyBoughtItems();
+    this.newItemSubscription = this.shoppingListService
+      .getNewItemObservable()
+      .subscribe(() => {
+        this.getToBuyItems();
+      });
   }
 
   getToBuyItems(): void {
