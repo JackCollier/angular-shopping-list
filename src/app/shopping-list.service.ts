@@ -12,6 +12,8 @@ export class ShoppingListService {
   private apiUrlPreviouslyBoughtList =
     'http://localhost:3000/previously-bought-list';
   private newItemSubject = new Subject<void>();
+  private deleteToBuyItemSubject = new Subject<void>();
+  private deletePreviouslyBoughtItemSubject = new Subject<void>();
 
   constructor(private http: HttpClient) {}
 
@@ -32,14 +34,32 @@ export class ShoppingListService {
   }
 
   deleteToBuyItem(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrlToBuyList}/${id}`);
+    return this.http.delete<void>(`${this.apiUrlToBuyList}/${id}`).pipe(
+      tap(() => {
+        this.deleteToBuyItemSubject.next();
+      })
+    );
   }
 
   deletePreviouslyBoughtItem(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrlPreviouslyBoughtList}/${id}`);
+    return this.http
+      .delete<void>(`${this.apiUrlPreviouslyBoughtList}/${id}`)
+      .pipe(
+        tap(() => {
+          this.deletePreviouslyBoughtItemSubject.next();
+        })
+      );
   }
 
   getNewItemObservable(): Observable<void> {
     return this.newItemSubject.asObservable();
+  }
+
+  getDeleteToBuyItemObservable(): Observable<void> {
+    return this.deleteToBuyItemSubject.asObservable();
+  }
+
+  getDeletePreviouslyBoughtItemObservable(): Observable<void> {
+    return this.deletePreviouslyBoughtItemSubject.asObservable();
   }
 }
