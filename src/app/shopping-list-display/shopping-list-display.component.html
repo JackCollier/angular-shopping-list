@@ -8,10 +8,11 @@
     (cdkDropListDropped)="drop($event)"
   >
     <li *ngFor="let item of toBuyList" cdkDrag>
-      <div>
+      <div [ngClass]="{ 'important-item': item.important }">
         <span>{{ toBuyList.indexOf(item) }}</span>
         <span>{{ item.itemName }}</span>
         <button (click)="deleteToBuyItem(item.id)">Delete</button>
+        <button (click)="makeItemImportant(item)">Important</button>
       </div>
     </li>
   </div>
