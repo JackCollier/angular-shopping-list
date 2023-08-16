@@ -79,6 +79,14 @@ export class ShoppingListService {
     );
   }
 
+  toggleItemImportance(item: ListItem): Observable<ListItem[]> {
+    const updatedItem = { ...item, important: !item.important };
+    return this.http.put<ListItem[]>(
+      `${this.apiUrlToBuyList}/${item.id}`,
+      updatedItem
+    );
+  }
+
   getNewItemObservable(): Observable<void> {
     return this.newItemSubject.asObservable();
   }
