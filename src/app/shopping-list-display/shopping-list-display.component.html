@@ -10,6 +10,7 @@
       <div>
         <span>{{ toBuyList.indexOf(item) }}</span>
         <span>{{ item.itemName }}</span>
+        <button (click)="deleteToBuyItem(item.id)">Delete</button>
       </div>
     </li>
   </div>
@@ -27,6 +28,7 @@
       <div>
         <span>{{ previouslyBoughtList.indexOf(item) }}</span>
         <span>{{ item.itemName }}</span>
+        <button (click)="deletePreviouslyBoughtItem(item.id)">Delete</button>
       </div>
     </li>
   </div>
